@@ -103,10 +103,10 @@ class SummaryTrigger(WordTrigger):
         return self.isWordIn(story.getSummary())
 
 class NotTrigger(Trigger):
-    def __init__(self,Trigger):
-        self.Trigger = Trigger
+    def __init__(self, trigger):
+        self.trigger = trigger
     def evaluate(self,story):
-        return not self.Trigger.evaluate(story)
+        return not self.trigger.evaluate(story)
 
 class AndTrigger(Trigger):
     def __init__(self,trigger1,trigger2):
@@ -145,7 +145,6 @@ def filterStories(stories, triggerlist):
 
     Returns: a list of only the stories for which a trigger in triggerlist fires.
     """
-    # TODO: Problem 10
     # This is a placeholder (we're just returning all the stories, with no filtering) 
     #return stories
     storylist = []
@@ -337,7 +336,7 @@ def main_thread(master):
 if __name__ == '__main__':
 
     root = Tk()
-    root.title("Some RSS parser")
+    root.title("My RSS parser")
     thread.start_new_thread(main_thread, (root,))
     root.mainloop()
 
